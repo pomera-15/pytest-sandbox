@@ -1,26 +1,29 @@
+import pytest
 from src.fizzbuzz import FizzBuzz
 
 
-class Test_FizzBuzzクラスの:
+class FizzBuzzクラスの:
 
-    class Test_convertメソッドについて:
+    class convertメソッドは:
 
-        def test_3の倍数の場合はFizzを返す(self):
+        def 値が3の倍数の場合はFizzを返す(self):
             fizzbuzz = FizzBuzz()
             assert fizzbuzz.convert(3) == "Fizz"
     
-        def test_5の倍数の場合はBuzzを返す(self):
+        def 値が5の倍数の場合はBuzzを返す(self):
             fizzbuzz = FizzBuzz()
-            assert fizzbuzz.convert(6) == "Fizz"
+            assert fizzbuzz.convert(5) == "Buzz"
     
-        def test_3の倍数かつ5の倍数の場合はFizzBuzzを返す(self):
+        def 値が3の倍数かつ5の倍数の場合はFizzBuzzを返す(self):
             fizzbuzz = FizzBuzz()
-            assert fizzbuzz.convert(9) == "Fizz"
+            assert fizzbuzz.convert(15) == "FizzBuzz"
 
-        def test_それ以外の場合はnを返す(self):
+        def それ以外の場合はnを返す(self):
             fizzbuzz = FizzBuzz()
-            assert fizzbuzz.convert(9) == "Fizz"
+            assert fizzbuzz.convert(7) == "7"
 
-        def test_引数がint型でない場合はValueErrorを発生させる(self):
+        def 引数がint型でない場合はValueErrorを発生させる(self):
             fizzbuzz = FizzBuzz()
-            assert fizzbuzz.convert(9) == "Fizz"
+            with pytest.raises(ValueError) as e:
+                fizzbuzz.convert("a")
+            assert str(e.value) == "引数がint型ではありません。"
